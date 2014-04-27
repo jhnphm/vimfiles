@@ -1,0 +1,3 @@
+[submodule "bundle/smyck/colors"]
+	path = bundle/smyck/colors
+	url = https://github.com/hukl/Smyck-Color-Scheme
