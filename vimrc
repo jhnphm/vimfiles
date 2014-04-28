@@ -45,21 +45,23 @@ Plugin 'mihaifm/bufstop'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/vim-statline'
-Plugin 'shemerey/vim-indexer'
+"Plugin 'shemerey/vim-indexer'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 "Plugin 'vim-scripts/FuzzyFinder'
 "Plugin 'vim-scripts/L9'
-Plugin 'vim-scripts/project.tar.gz'
+"Plugin 'vim-scripts/project.tar.gz'
 Plugin 'vim-scripts/scd.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Add smyck colorscheme
-set rtp+=~/.vim/bundle/smyck
+set rtp+=~/.vim/nobundle/smyck
 colorscheme smyck
 
 "Misc options"{{{
