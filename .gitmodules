@@ -1,6 +1,6 @@
-[submodule "bundle/smyck/colors"]
-	path = bundle/smyck/colors
-	url = https://github.com/hukl/Smyck-Color-Scheme
 [submodule "bundle/Vundle.vim"]
 	path = bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "nobundle/smyck/colors"]
+	path = nobundle/smyck/colors
+	url = https://github.com/hukl/Smyck-Color-Scheme
