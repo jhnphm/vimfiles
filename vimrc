@@ -56,7 +56,6 @@ Plugin 'vim-scripts/scd.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
 " Add smyck colorscheme
 set rtp+=~/.vim/bundle/smyck
 colorscheme smyck
