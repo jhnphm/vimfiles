@@ -55,6 +55,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/scd.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-session'
+Plugin 'embear/vim-localvimrc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -64,8 +66,14 @@ filetype plugin indent on    " required
 set rtp+=~/.vim/nobundle/smyck
 colorscheme smyck
 
+" Plugin options
+let g:localvimrc_persistent=1
+let g:localvimrc_name="lvimrc"
+
+" For easytag performance
+let g:easytags_auto_highlight = 0
 "Misc options"{{{
-set showmatch
+set noshowmatch
 set backspace=indent,eol,start  " more powerful backspacing
 set textwidth=160
 set nrformats-=octal
