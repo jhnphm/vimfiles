@@ -17,7 +17,7 @@ inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 "}}}
 
-set modeline
+"set modeline
 
 
 set viminfo=%,'50,\"100,n~/.viminfo
@@ -53,6 +53,10 @@ Plugin 'tpope/vim-surround'
 "Plugin 'vim-scripts/L9'
 "Plugin 'vim-scripts/project.tar.gz'
 Plugin 'vim-scripts/scd.vim'
+"lugin 'vim-scripts/colorsupport.vim'
+"Plugin 'vim-scripts/mayansmoke'
+"lugin 'vim-scripts/pyte'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 "Plugin 'xolox/vim-session'
@@ -63,8 +67,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Add smyck colorscheme
-set rtp+=~/.vim/nobundle/smyck
 colorscheme smyck
+"colorscheme pyte
+"colorscheme mayansmoke
 
 " Plugin options
 let g:localvimrc_persistent=1
@@ -73,7 +78,6 @@ let g:localvimrc_name="lvimrc"
 " For easytag performance
 let g:easytags_auto_highlight = 0
 "Misc options"{{{
-set noshowmatch
 set backspace=indent,eol,start  " more powerful backspacing
 set textwidth=160
 set nrformats-=octal
