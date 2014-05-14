@@ -37,7 +37,17 @@ call vundle#begin()
 " "call vundle#begin('~/some/path/here')
 "
 " " let Vundle manage Vundle, required
-Plugin 'ciaranm/inkpot'
+"Plugin 'shemerey/vim-indexer'
+"Plugin 'vim-scripts/FuzzyFinder'
+"Plugin 'vim-scripts/L9'
+"Plugin 'vim-scripts/colorsupport.vim'
+"Plugin 'vim-scripts/mayansmoke'
+"Plugin 'vim-scripts/project.tar.gz'
+"Plugin 'vim-scripts/pyte'
+"Plugin 'xolox/vim-session'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'embear/vim-localvimrc'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'gioele/vim-autoswap'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/vim-easy-align'
@@ -45,22 +55,14 @@ Plugin 'mihaifm/bufstop'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/vim-statline'
-"Plugin 'shemerey/vim-indexer'
+Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
-"Plugin 'vim-scripts/FuzzyFinder'
-"Plugin 'vim-scripts/L9'
-"Plugin 'vim-scripts/project.tar.gz'
 Plugin 'vim-scripts/scd.vim'
-"lugin 'vim-scripts/colorsupport.vim'
-"Plugin 'vim-scripts/mayansmoke'
-"lugin 'vim-scripts/pyte'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'xolox/vim-misc'
+Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-easytags'
-"Plugin 'xolox/vim-session'
-Plugin 'embear/vim-localvimrc'
+Plugin 'xolox/vim-misc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -70,6 +72,7 @@ filetype plugin indent on    " required
 colorscheme smyck
 "colorscheme pyte
 "colorscheme mayansmoke
+"colorscheme inkpot
 
 " Plugin options
 let g:localvimrc_persistent=1
@@ -79,7 +82,7 @@ let g:localvimrc_name="lvimrc"
 let g:easytags_auto_highlight = 0
 "Misc options"{{{
 set backspace=indent,eol,start  " more powerful backspacing
-set textwidth=160
+set textwidth=80
 set nrformats-=octal
 set fdm=marker
 set ruler
@@ -119,4 +122,5 @@ set gfn=Inconsolata
 let g:xml_syntax_folding=1
 "au FileType xml setlocal foldmethod=syntax
 "au FileType jsp setlocal foldmethod=syntax
+vmap ,x :!tidy -q -i --show-errors 0<CR>
 "}}}
