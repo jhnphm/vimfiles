@@ -1,0 +1,159 @@
+" File encoding"{{{
+set encoding=utf8 
+set ffs=unix,dos 
+"}}}
+
+"Deal with line wrapping"{{{
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+"}}}
+
+"set modeline
+
+set viminfo=%,'50,\"100,n~/.viminfo
+
+"Autocd into current file location
+"autocmd BufEnter * lcd %:p:h
+command! Clcd lcd %:p:h
+
+"doautoall VimEnter
+
+
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" " let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+"Plugin 'shemerey/vim-indexer'
+"Plugin 'vim-scripts/FuzzyFinder'
+"Plugin 'vim-scripts/L9'
+"Plugin 'vim-scripts/colorsupport.vim'
+"Plugin 'vim-scripts/mayansmoke'
+"Plugin 'vim-scripts/project.tar.gz'
+"Plugin 'vim-scripts/pyte'
+"Plugin 'xolox/vim-session'
+"Plugin 'Rip-Rip/clang_complete'
+"Plugin 'justmao945/vim-clang'
+"Plugin 'jiangmiao/auto-pairs'
+ 
+"Plugin 'vim-scripts/mayansmoke'
+Plugin 'cocopon/iceberg.vim'
+Plugin 'flazz/vim-colorschemes'
+"Plugin 'sickill/vim-monokai'
+ 
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'embear/vim-localvimrc'
+Plugin 'gioele/vim-autoswap'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'mihaifm/bufstop'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/vim-statline'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'pavoljuhas/scd.vim'
+Plugin 'bling/vim-airline'
+"Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+Plugin 'vim-scripts/Conque-Shell'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Add smyck colorscheme
+colorscheme smyck
+"colorscheme pyte
+"colorscheme mayansmoke
+"colorscheme inkpot
+
+" Plugin options
+let g:localvimrc_persistent=1
+let g:localvimrc_name="lvimrc"
+"let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
+let g:session_autosave='yes'
+let g:session_autoload='yes'
+let g:session_autosave_periodic=20
+
+" For easytag performance
+let g:easytags_auto_highlight = 0
+
+"Misc options"{{{
+set backspace=indent,eol,start  " more powerful backspacing
+set textwidth=80
+set nrformats-=octal
+set fdm=marker
+set ruler
+set showcmd
+set wildmenu
+set nu
+"}}}
+
+"Indent options {{{
+set cindent
+set expandtab
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+"}}}
+"
+" Syntax-specific stuff"{{{
+
+let xml_use_xhtml=1
+
+" Latex Suite stuff
+let g:Tex_ViewRule_pdf = 'evince'
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+" Java stuff
+if has("autocmd")
+       autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+endif 
+
+" VHDL
+if has("autocmd")
+       autocmd Filetype vhdl  setlocal fdm=marker cms=\ --%s 
+       let g:vhdl_indent_genportmap = 0
+endif 
+
+let g:xml_syntax_folding=1
+"au FileType xml setlocal foldmethod=syntax
+"au FileType jsp setlocal foldmethod=syntax
+"}}}
+
+set gfn=Inconsolata\ 11
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+set guioptions-=e  "remove tabline
+
+
+nmap <C-\> :vsplit<CR>:let word=expand("<cword>")<CR><C-W><C-W>:exec "tag" word<CR>
+
+" Fix alt mappings in gnome-terminal
+"let c='a'
+"while c <= 'z'
+"  exec "set <A-".c.">=\e".c
+"  exec "imap \e".c." <A-".c.">"
+"  let c = nr2char(1+char2nr(c))
+"endw
+
+"set ttimeout ttimeoutlen=10
+

@@ -1,0 +1,4 @@
+so /etc/vimrc
+so ~/.vim/vimrc_base
+
+Plugin 'davidhalter/jedi-vim'
