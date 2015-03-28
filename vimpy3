@@ -1,8 +1,0 @@
-so /etc/vimrc
-so ~/.vim/vimrc_base
-
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#force_py_version = 3
-let g:session_directory='~/.vim/sessions/vimpy3'
-
-" vim: filetype=vim
