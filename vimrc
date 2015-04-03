@@ -26,8 +26,7 @@ command! Clcd lcd %:p:h
 
 "doautoall VimEnter
 
-
-
+" Plugins"{{{
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -36,18 +35,14 @@ call vundle#begin()
 "
 " " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
 "Plugin 'shemerey/vim-indexer'
-"Plugin 'vim-scripts/FuzzyFinder'
-"Plugin 'vim-scripts/L9'
-"Plugin 'vim-scripts/colorsupport.vim'
-"Plugin 'vim-scripts/project.tar.gz'
-"Plugin 'vim-scripts/pyte'
-"Plugin 'xolox/vim-session'
-"Plugin 'Rip-Rip/clang_complete'
-"Plugin 'justmao945/vim-clang'
 "Plugin 'jiangmiao/auto-pairs'
- 
+"
 Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-scripts/ScrollColors'
+Plugin 'blerins/flattown'
+Plugin 'w0ng/vim-hybrid'
  
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'embear/vim-localvimrc'
@@ -55,16 +50,24 @@ Plugin 'gioele/vim-autoswap'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'mihaifm/bufstop'
+
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/vim-statline'
+"
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+
 Plugin 'pavoljuhas/scd.vim'
+
 Plugin 'bling/vim-airline'
+Plugin 'mkitt/tabline.vim'
+Plugin 'majutsushi/tagbar'
+
 Plugin 'davidhalter/jedi-vim'
+Plugin 'hdima/python-syntax'
 
 "Plugin 'xolox/vim-easytags'
 Plugin 'Shougo/neocomplete.vim'
@@ -86,53 +89,79 @@ Plugin 'xolox/vim-session'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+"}}}
 
-colorscheme jelleybeans
-"colorscheme pyte
-"colorscheme mayansmoke
-"colorscheme inkpot
+" Plugin options"{{{
 
-"
-" Plugin options
-" 
+" Airline
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+"let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+ 
+" Lvimrc"{{{
 let g:localvimrc_persistent=1
 let g:localvimrc_name="lvimrc"
-"let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
+"}}}
+
+" Session"{{{
 let g:session_autosave='yes'
 let g:session_autoload='yes'
 let g:session_autosave_periodic=20
+"}}}
 
+" Easytags"{{{
 " For easytag performance
 let g:easytags_auto_highlight=0
+"}}}
 
-" Vimfiler
+" Vimfiler"{{{
 let g:vimfiler_as_default_explorer=1
 let g:loaded_netrwPlugin=0
+"}}}
 
-" Jedi 
+" Jedi "{{{
 let g:jedi#force_py_version = 3
+let g:jedi#show_call_signatures = 0
+"}}}
+
+" Tagbar
+let g:tagbar_left=1
+
+" Neocomplete"{{{
 
 " Jedi+Neocomplete
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
-"let g:neocomplete#force_omni_input_patterns.python =
+let g:neocomplete#force_omni_input_patterns.python =
             \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
 " Marching+Neocomplete.vim
 let g:marching_enable_neocomplete = 1
 
-if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-endif
-
 let g:neocomplete#force_omni_input_patterns.c = 
             \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 let g:neocomplete#force_omni_input_patterns.cpp = 
             \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-
-
+"}}}
+"}}}
+"
 "Misc options"{{{
 set backspace=indent,eol,start  " more powerful backspacing
 set textwidth=80
@@ -186,18 +215,30 @@ set guioptions-=e  "remove tabline
 set mousemodel=popup
 "}}}
 
+" Colorschemes
+colorscheme jelleybeans
+"colorscheme hybrid
+"colorscheme Monokai-chris 
+"colorscheme smyck
+
+
 " Let ctrl-\ jump to tag in vsplit
+noremap <M-1> 1gt
+noremap <M-2> 2gt
+noremap <M-3> 3gt
+noremap <M-4> 4gt
+noremap <M-5> 5gt
+noremap <M-6> 6gt
+noremap <M-7> 7gt
+noremap <M-8> 8gt
+noremap <M-9> 9gt
+noremap <M-0> 10gt
 nmap <C-\> :vsplit<CR>:let word=expand("<cword>")<CR><C-W><C-W>:exec "tag" word<CR>
-inoremap <Nul> <C-x><C-o>
+inoremap <C-Space> <C-x><C-o>
 
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
 
-" Fix alt mappings in gnome-terminal
-"let c='a'
-"while c <= 'z'
-"  exec "set <A-".c.">=\e".c
-"  exec "imap \e".c." <A-".c.">"
-"  let c = nr2char(1+char2nr(c))
-"endw
-
-"set ttimeout ttimeoutlen=10
+" NeoMRU
+nmap <F2> :Unite neomru/file<CR>
 
