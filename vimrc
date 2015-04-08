@@ -18,7 +18,7 @@ inoremap <Up> <C-o>gk
 
 "set modeline
 
-set viminfo=%,'50,\"100,n~/.viminfo
+"set viminfo=%,'50,\"100,n~/.viminfo
 
 "Autocd into current file location
 "autocmd BufEnter * lcd %:p:h
@@ -38,9 +38,10 @@ Plugin 'gmarik/Vundle.vim'
 
 "Plugin 'shemerey/vim-indexer'
 "Plugin 'jiangmiao/auto-pairs'
-"
+"Plugin 'vim-scripts/Briofita'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/ScrollColors'
+
 Plugin 'blerins/flattown'
 Plugin 'w0ng/vim-hybrid'
  
@@ -69,7 +70,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'hdima/python-syntax'
 
-"Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-easytags'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/neossh.vim'
@@ -93,7 +94,7 @@ filetype plugin indent on    " required
 
 " Plugin options"{{{
 
-" Airline
+" Airline"{{{
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
 endif
@@ -109,7 +110,8 @@ let g:airline_symbols.paste = 'ρ'
 "let g:airline_symbols.paste = 'Þ'
 "let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
- 
+ "}}}
+
 " Lvimrc"{{{
 let g:localvimrc_persistent=1
 let g:localvimrc_name="lvimrc"
@@ -124,6 +126,7 @@ let g:session_autosave_periodic=20
 " Easytags"{{{
 " For easytag performance
 let g:easytags_auto_highlight=0
+let g:easytags_async=1
 "}}}
 
 " Vimfiler"{{{
@@ -133,7 +136,7 @@ let g:loaded_netrwPlugin=0
 
 " Jedi "{{{
 let g:jedi#force_py_version = 3
-let g:jedi#show_call_signatures = 0
+let g:jedi#show_call_signatures = 1
 "}}}
 
 " Tagbar
@@ -182,7 +185,7 @@ set shiftwidth=4
 "}}}
 "
 " Syntax-specific stuff"{{{
-
+let g:python_highlight_all=1
 let xml_use_xhtml=1
 
 " Latex Suite stuff
@@ -240,5 +243,6 @@ inoremap <C-Space> <C-x><C-o>
 nmap <F8> :TagbarToggle<CR>
 
 " NeoMRU
-nmap <F2> :Unite neomru/file<CR>
+nmap <F2> :Unite neomru/file<CR>i
+nmap <F3> :Unite neomru/directory<CR>i
 
