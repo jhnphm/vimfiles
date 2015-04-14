@@ -26,71 +26,99 @@ command! Clcd lcd %:p:h
 
 "doautoall VimEnter
 
-" Plugins"{{{
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-"
-" " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 
-"Plugin 'shemerey/vim-indexer'
-"Plugin 'jiangmiao/auto-pairs'
-"Plugin 'vim-scripts/Briofita'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-scripts/ScrollColors'
 
-Plugin 'blerins/flattown'
-Plugin 'w0ng/vim-hybrid'
+
+"NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=/home/john/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('/home/john/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+
+"" You can specify revision/branch/tag.
+"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+"NeoBundle 'shemerey/vim-indexer'
+"NeoBundle 'jiangmiao/auto-pairs'
+"NeoBundle 'vim-scripts/Briofita'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'vim-scripts/ScrollColors'
+
+NeoBundle 'blerins/flattown'
+NeoBundle 'w0ng/vim-hybrid'
  
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'embear/vim-localvimrc'
-Plugin 'gioele/vim-autoswap'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'mihaifm/bufstop'
+NeoBundle 'ciaranm/securemodelines'
+NeoBundle 'Chiel92/vim-autoformat'
+NeoBundle 'embear/vim-localvimrc'
+NeoBundle 'gioele/vim-autoswap'
+NeoBundle 'hynek/vim-python-pep8-indent'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'mihaifm/bufstop'
 
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/vim-statline'
-"
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
+"NeoBundle 'scrooloose/nerdcommenter'
+"NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/vim-statline'
+ 
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-surround'
 
-Plugin 'pavoljuhas/scd.vim'
+NeoBundle 'pavoljuhas/scd.vim'
 
-Plugin 'bling/vim-airline'
-Plugin 'mkitt/tabline.vim'
-Plugin 'majutsushi/tagbar'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'mkitt/tabline.vim'
+NeoBundle 'majutsushi/tagbar'
 
-Plugin 'davidhalter/jedi-vim'
-Plugin 'hdima/python-syntax'
+NeoBundle 'hdima/python-syntax'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'tmhedberg/SimpylFold'
 
-Plugin 'xolox/vim-easytags'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/neossh.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimfiler'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell'
-Plugin 'Shougo/vinarise.vim'
+NeoBundle 'myint/clang-complete'
 
-Plugin 'osyo-manga/vim-reunions'
-Plugin 'osyo-manga/vim-marching'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/neossh.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vinarise.vim'
 
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
-"Plugin 'nicoraffo/conque'
+"NeoBundle 'osyo-manga/vim-reunions'
+"NeoBundle 'osyo-manga/vim-marching'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-"}}}
+
+
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-easytags'
+NeoBundle 'xolox/vim-session'
+"NeoBundle 'nicoraffo/conque'
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+
+
 
 " Plugin options"{{{
 
@@ -155,13 +183,30 @@ let g:neocomplete#force_omni_input_patterns.python =
             \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
-" Marching+Neocomplete.vim
-let g:marching_enable_neocomplete = 1
+"" Marching+Neocomplete.vim
+"let g:marching_enable_neocomplete = 1
+"
+"let g:neocomplete#force_omni_input_patterns.c = 
+"            \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+"let g:neocomplete#force_omni_input_patterns.cpp = 
+"            \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
-let g:neocomplete#force_omni_input_patterns.c = 
-            \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-let g:neocomplete#force_omni_input_patterns.cpp = 
-            \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+
+let g:neocomplete#force_omni_input_patterns.c =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+let g:neocomplete#force_omni_input_patterns.cpp =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:neocomplete#force_omni_input_patterns.objc =
+      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
+let g:neocomplete#force_omni_input_patterns.objcpp =
+      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_default_keymappings = 0
+"let g:clang_use_library = 1
+
+
+
 "}}}
 "}}}
 "
@@ -224,8 +269,7 @@ colorscheme jelleybeans
 "colorscheme Monokai-chris 
 "colorscheme smyck
 
-
-" Let ctrl-\ jump to tag in vsplit
+" Alt-# to go to tab
 noremap <M-1> 1gt
 noremap <M-2> 2gt
 noremap <M-3> 3gt
@@ -236,6 +280,11 @@ noremap <M-7> 7gt
 noremap <M-8> 8gt
 noremap <M-9> 9gt
 noremap <M-0> 10gt
+
+"Ctrl-V for paste
+imap <C-V> <ESC>"+pi
+
+" Let ctrl-\ jump to tag in vsplit
 nmap <C-\> :vsplit<CR>:let word=expand("<cword>")<CR><C-W><C-W>:exec "tag" word<CR>
 inoremap <C-Space> <C-x><C-o>
 
