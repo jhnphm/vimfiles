@@ -63,9 +63,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "NeoBundle 'shemerey/vim-indexer'
 "NeoBundle 'jiangmiao/auto-pairs'
 "NeoBundle 'vim-scripts/Briofita'
-NeoBundle 'flazz/vim-colorschemes'
+
+"Colorschemes
 NeoBundle 'vim-scripts/ScrollColors'
 
+NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'blerins/flattown'
 NeoBundle 'w0ng/vim-hybrid'
  
@@ -73,7 +75,6 @@ NeoBundle 'ciaranm/securemodelines'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'embear/vim-localvimrc'
 NeoBundle 'gioele/vim-autoswap'
-NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'mihaifm/bufstop'
 
@@ -88,16 +89,24 @@ NeoBundle 'tpope/vim-surround'
 
 NeoBundle 'pavoljuhas/scd.vim'
 
+"Bling
 NeoBundle 'bling/vim-airline'
 NeoBundle 'mkitt/tabline.vim'
-NeoBundle 'majutsushi/tagbar'
 
+"Python syntax stuff
+NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'hdima/python-syntax'
-NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'tmhedberg/SimpylFold'
 
-NeoBundle 'myint/clang-complete'
+"Autocomplete
+NeoBundle 'davidhalter/jedi-vim'
+"NeoBundle 'myint/clang-complete'
 
+"Outlining
+NeoBundle 'vimoutliner/vimoutliner.git'
+NeoBundle 'majutsushi/tagbar'
+
+"Unite stuff
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neossh.vim'
@@ -107,8 +116,8 @@ NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/vinarise.vim'
 
-"NeoBundle 'osyo-manga/vim-reunions'
-"NeoBundle 'osyo-manga/vim-marching'
+NeoBundle 'osyo-manga/vim-reunions'
+NeoBundle 'osyo-manga/vim-marching'
 
 
 
