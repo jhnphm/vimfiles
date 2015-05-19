@@ -87,7 +87,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-sensible'
 NeoBundle 'tpope/vim-surround'
 
-NeoBundle 'pavoljuhas/scd.vim'
+NeoBundle 'dag/vim-fish'
 
 "Bling
 NeoBundle 'bling/vim-airline'
@@ -102,9 +102,14 @@ NeoBundle 'tmhedberg/SimpylFold'
 NeoBundle 'davidhalter/jedi-vim'
 "NeoBundle 'myint/clang-complete'
 
-"Outlining
-NeoBundle 'vimoutliner/vimoutliner.git'
+"Code outline
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'koron/minimap-vim.git'
+"NeoBundle 'jhnphm/vim-minimap.git'
+
+"Writing
+NeoBundle 'vimoutliner/vimoutliner.git'
+NeoBundle 'lervag/vimtex.git'
 
 "Unite stuff
 NeoBundle 'Shougo/neocomplete.vim'
@@ -202,31 +207,29 @@ let g:neocomplete#force_omni_input_patterns.python =
             \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
-"" Marching+Neocomplete.vim
-"let g:marching_enable_neocomplete = 1
-"
-"let g:neocomplete#force_omni_input_patterns.c = 
-"            \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-"let g:neocomplete#force_omni_input_patterns.cpp = 
-"            \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+" Marching+Neocomplete.vim
+let g:marching_enable_neocomplete = 1
+
+let g:neocomplete#force_omni_input_patterns.c = 
+            \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:neocomplete#force_omni_input_patterns.cpp = 
+            \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
 
-let g:neocomplete#force_omni_input_patterns.c =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#force_omni_input_patterns.cpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-let g:neocomplete#force_omni_input_patterns.objc =
-      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
-let g:neocomplete#force_omni_input_patterns.objcpp =
-      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_default_keymappings = 0
-"let g:clang_use_library = 1
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.tex =
+            \ '\v\\\a*(ref|cite)\a*([^]]*\])?\{([^}]*,)*[^}]*'
+
 
 
 
 "}}}
+
+" Vimtex
+let g:vimtex_quickfix_ignore_all_warnings=1
+
 "}}}
 "
 "Misc options"{{{
@@ -301,7 +304,7 @@ noremap <M-9> 9gt
 noremap <M-0> 10gt
 
 "Ctrl-V for paste
-imap <C-V> <ESC>"+pi
+imap <C-V> <ESC>"+pi<ESC>la
 
 " Let ctrl-\ jump to tag in vsplit
 nmap <C-\> :vsplit<CR>:let word=expand("<cword>")<CR><C-W><C-W>:exec "tag" word<CR>
